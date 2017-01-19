@@ -17,4 +17,8 @@ var ids = module.exports = {
     separator = void 0 === separator ? ids.separator : separator || '';
     return prefix + separator + ids.uuid();
   },
+
+  create: function(prefix, separator) {
+    return ids.id.bind(null, prefix, separator);
+  }
 }
