@@ -1,6 +1,6 @@
 {
   "name": "eyed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Cory Mawhorter",
     "email": "cory.mawhorter@gmail.com",
@@ -16,6 +16,9 @@
   },
   "scripts": {
     "test": "mocha test"
+  },
+  "engines": {
+    "node": ">=0.12.0 - <9.0.0"
   },
   "license": "MIT",
   "dependencies": {

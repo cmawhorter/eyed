@@ -1,6 +1,12 @@
-# D
+# EyeD [![Build Status](https://travis-ci.org/cmawhorter/eyed.svg?branch=master)](http://travis-ci.org/cmawhorter/eyed)
 
 Generates a v4 uuid base62 encoded e.g. `card_3xs3cYSzXKNI5vhHA203qK`
+
+## Installing
+
+`npm install eyed --save`
+
+## Getting started
 
 ```js
 // npm install cmawhorter/D --save
