@@ -1,30 +1,37 @@
-# EyeD [![Build Status](https://travis-ci.org/cmawhorter/eyed.svg?branch=master)](http://travis-ci.org/cmawhorter/eyed)
+# Eye-D [![Test](https://github.com/cmawhorter/eyed/actions/workflows/test.yml/badge.svg)](https://github.com/cmawhorter/eyed/actions/workflows/test.yml)
 
-Generates a v4 uuid base62 encoded e.g. `card_3xs3cYSzXKNI5vhHA203qK`
+Generates a uuid v4 in base62 encoded format e.g. `card_3xs3cYSzXKNI5vhHA203qK`.
 
 ## Installing
 
-`npm install eyed --save`
+`npm i eyed`
 
 ## Getting started
 
-```js
-// npm install cmawhorter/D --save
-var EyeD = require('eyed');
+```ts
+import {
+  generateUuid,
+  generateId,
+  parseId,
+  validId,
+} from 'eyed';
 
 // uuid creates a base62-encoded uuid
-EyeD.uuid(); // "3xs3cYSzXKNI5vhHA203qK" from card_3xs3cYSzXKNI5vhHA203qK
+console.log(generateUuid()); // unprefixed. just the base62 encoded uuid "3xs3cYSzXKNI5vhHA203qK"
 
-// id adds a prefix to uuid with a default separator
-EyeD.id('card') // card_3xs3cYSzXKNI5vhHA203qK
-EyeD.id('card', ':') // card:3xs3cYSzXKNI5vhHA203qK
-// change the default
-EyeD.separator = ':';
-EyeD.id('card') // card:3xs3cYSzXKNI5vhHA203qK
+// generateId adds a prefix to uuid with a default separator
+console.log(generateId('card')) // card_3xs3cYSzXKNI5vhHA203qK
+console.log(generateId('card', ':')) // card:3xs3cYSzXKNI5vhHA203qK
 
-// create 
-var CardId = EyeD.create('card') // or EyeD.create('card', ':')
-var UserId = EyeD.create('usr')
-CardId() // card_3xs3cYSzXKNI5vhHA203qK
-UserId() // usr_5jtCjUn51hAA7pBcWECW3S
+console.log(parseId('card_3xs3cYSzXKNI5vhHA203qK')) // { prefix: 'card', separator: '_', uuid: '3xs3cYSzXKNI5vhHA203qK' }
+
+console.log(validId('card_3xs3cYSzXKNI5vhHA203qK', 'card')) // true
+console.log(validId('card_3', 'card')) // true
+console.log(validId('card_+', 'card')) // false
+console.log(validId('card_3_2', 'card')) // false
+// with strict mode the byte length of the id portion of string is confirmed to be 16 bytes
+console.log(validId('card_3', 'card', '_', true)) // false
 ```
+## How it works
+
+It has two dependencies: [uuid](https://github.com/uuidjs/uuid) to create the uuid and [base-x](https://github.com/cryptocoinjs/base-x) to base62 encode.
