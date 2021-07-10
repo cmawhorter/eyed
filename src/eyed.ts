@@ -11,8 +11,8 @@ const defaultSeparator = '_';
  * Create base62 encoded uuid v4
  * @returns
  */
-export function generateUuid(): string {
-  const bytes = generateUuidBytes();
+export function generateUuid(byteCount?: number): string {
+  const bytes = generateUuidBytes(byteCount);
   return base62Encode(bytes);
 }
 
@@ -30,9 +30,10 @@ export const uuid = generateUuid;
  */
 export function generateId(
   prefix: string,
-  separator: Separator = defaultSeparator
+  separator: Separator = defaultSeparator,
+  byteCount?: number
 ): string {
-  return prefix + (separator || '') + generateUuid();
+  return prefix + (separator || '') + generateUuid(byteCount);
 }
 
 /**
