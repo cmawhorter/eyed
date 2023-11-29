@@ -112,8 +112,8 @@ export function validId(
     }
     return strict ? base62Decode(parsed.uuid).byteLength === UUID4_BYTES : true;
   }
-  catch (err) {
-    if (err.message.indexOf(E_MALFORMED) > -1) {
+  catch (err: unknown) {
+    if (err instanceof Error && err.message.includes(E_MALFORMED)) {
       return false;
     }
     throw err;

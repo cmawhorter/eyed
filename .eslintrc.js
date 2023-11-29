@@ -20,5 +20,6 @@ module.exports = {
       }
     ],
     'no-undef': 2,
+    'no-console': 2,
   },
 };
