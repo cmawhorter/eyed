@@ -8,7 +8,7 @@ export function base62Encode(value: Buffer | Uint8Array): string {
   return encoder.encode(value);
 }
 
-export function base62Decode(value: string): Buffer {
+export function base62Decode(value: string): Uint8Array {
   return encoder.decode(value);
 }
 
