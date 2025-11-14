@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const globals = require('globals');
-const pluginJs = require('@eslint/js');
-const tseslint = require('typescript-eslint');
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-module.exports = [
+export default [
   {
     ignores: [
       'dist/**',

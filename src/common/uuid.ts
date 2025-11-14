@@ -10,7 +10,7 @@ export function generateUuidBytes(bytes: number = UUID4_BYTES): Uint8Array {
     throw new Error(`too many bytes; a maximum of ${UUID4_BYTES} bytes is required`);
   }
   const buffer = new Uint8Array(UUID4_BYTES);
-  v4(null, buffer);
+  v4(undefined, buffer);
   return bytes === UUID4_BYTES ? buffer : sliceBytes(buffer, 0, bytes);
 }
 
